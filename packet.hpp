@@ -30,7 +30,7 @@ private:
 
 class packetr {
 public:
-    packetr(std::string &s) {}
+    packetr(std::string &s);
 
     int8_t i8();
     int16_t i16();
