@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdint>
 #include <cstring>
+#include <string>
 
 class packetw {
 public:
@@ -19,7 +20,7 @@ public:
     void u64(uint64_t v);
     void f32(float v);
     void f64(double v);
-    void string(std::vector<uint16_t> buffer);
+    void string(std::u16string v);
 
     uint8_t* data();
 private:
