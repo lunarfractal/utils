@@ -143,6 +143,7 @@ double packetr::f64() {
     double v;
     std::memcpy(&v, &buffer[offset], 8);
     offset += 8;
+    return v;
 }
 
 std::u16string packetr::string() {
