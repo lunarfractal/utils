@@ -1,0 +1,3 @@
+all of these files are designed for linux systems
+it works well with Ubuntu/Debian but I mostly use them on arch linux
+they are easily compilable with gcc or g++ (no building required)
