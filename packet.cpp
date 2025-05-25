@@ -73,3 +73,89 @@ packetw& packetw::string(std::u16string &v) {
 uint8_t* packetw::data() {
     return buffer.data();
 }
+
+packetr::packetr(std::string &s) : buffer(s), offset(0) {}
+
+int8_t packetr::i8() {
+    int8_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(int8_t));
+    offset += sizeof(int8_t);
+    return v;
+}
+
+int16_t packetr::i16() {
+    int16_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(int16_t));
+    offset += sizeof(int16_t);
+    return v;
+}
+
+int32_t packetr::i32() {
+    int32_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(int32_t));
+    offset += sizeof(int32_t);
+    return v;
+}
+
+int64_t packetr::i64() {
+    int64_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(int64_t));
+    offset += sizeof(int64_t);
+    return v;
+}
+
+uint8_t packetr::u8() {
+    uint8_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(uint8_t));
+    offset += sizeof(uint8_t);
+    return v;
+}
+
+uint16_t packetr::u16() {
+    uint16_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(uint16_t));
+    offset += sizeof(uint16_t);
+    return v;
+}
+
+uint32_t packetr::u32() {
+    uint32_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(uint32_t));
+    offset += sizeof(uint32_t);
+    return v;
+}
+
+uint64_t packetr::u64() {
+    uint64_t v;
+    std::memcpy(&v, &buffer[offset], sizeof(uint64_t));
+    offset += sizeof(uint64_t);
+    return v;
+}
+
+float packetr::f32() {
+    float v;
+    std::memcpy(&v, &buffer[offset], 4);
+    offset += 4;
+    return v;
+}
+
+double packetr::f64() {
+    double v;
+    std::memcpy(&v, &buffer[offset], 8);
+    offset += 8;
+}
+
+std::u16string packetr::string() {
+    std::u16string dest;
+    const size_t len = buffer.size();
+
+    while (offset + 1 < len) {
+        uint16_t c;
+        std::memcpy(&c, &buffer[offset], sizeof(uint16_t));
+        offset += 2;
+        if (c == 0x00) break;
+        dest.push_back(c);
+    }
+
+    return dest;
+}
