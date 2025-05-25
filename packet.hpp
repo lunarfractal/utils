@@ -7,7 +7,7 @@
 
 class packetw {
 public:
-    packetw();
+    packetw(int size);
     template<typename T>
     void w(T v);
     uint8_t* data();
