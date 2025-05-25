@@ -20,7 +20,7 @@ public:
     void u64(uint64_t v);
     void f32(float v);
     void f64(double v);
-    void string(std::u16string v);
+    void string(std::u16string &v);
 
     uint8_t* data();
 private:
