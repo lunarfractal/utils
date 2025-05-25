@@ -20,7 +20,7 @@ public:
     packetw& u64(uint64_t v);
     packetw& f32(float v);
     packetw& f64(double v);
-    packetw& string(std::u16string &v);
+    packetw& string(const std::u16string &v);
 
     uint8_t* data();
 private:
