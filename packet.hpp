@@ -8,8 +8,19 @@
 class packetw {
 public:
     packetw(int size);
-    template<typename T>
-    void w(T v);
+
+    void i8(int8_t v);
+    void i16(int16_t v);
+    void i32(int32_t v);
+    void i64(int64_t v);
+    void u8(uint8_t v);
+    void u16(uint16_t v);
+    void u32(uint32_t v);
+    void u64(uint64_t v);
+    void f32(float v);
+    void f64(double v);
+    void string(std::vector<uint16_t> buffer);
+
     uint8_t* data();
 private:
     int offset;
