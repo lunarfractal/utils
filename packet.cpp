@@ -151,11 +151,12 @@ std::u16string packetr::string() {
     const size_t len = buffer.size();
 
     while (offset + 1 < len) {
-        uint16_t c;
-        std::memcpy(&c, &buffer[offset], sizeof(uint16_t));
+        char16_t ch;
+        std::memcpy(&ch, &buffer[offset], sizeof(char16_t));
         offset += 2;
-        if (c == 0x00) break;
-        dest.push_back(c);
+
+        if (ch == u'\0') break;
+        dest.push_back(ch);
     }
 
     return dest;
