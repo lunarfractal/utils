@@ -65,7 +65,7 @@ packetw& packetw::f64(double v) {
 packetw& packetw::string(const std::u16string &v) {
     std::memcpy(&buffer[offset], v.data(), 2 * v.length());
     offset += 2 * v.length();
-    buffer.insert(buffer.end(), {0,0});
+    buffer.insert(buffer.begin() + offset, {0,0});
     offset += 2;
     return *this;
 }
